@@ -1,4 +1,5 @@
 "use client"
+import axios from "axios"
 import React, { useEffect, useState } from 'react';
 import Header from './header';
 import SectionTwo from './Score2';
@@ -19,8 +20,21 @@ export default function Home() {
   const router = useRouter(); // corrected useRouter to router
   const [grandTotal, setGrandTotal] = useState(0);
   const [grandPercentage, setGrandPercentage] = useState(0);
+const [userId, setUserId] = useState(null); // Initialize user ID
+
+  // Get user ID from localStorage in useEffect to avoid server-side errors
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('id'); // Client-side code
+    if (storedUserId) {
+      setUserId(storedUserId); // Set user ID in state
+    } else {
+      router.push('/signup'); // Redirect to signup if no user ID
+    }
+  }, [router]);
+
   
-  const handleCalculateTotal = (event) => { // added event parameter
+  
+  const handleCalculateTotal = async(event) => { // added event parameter
     event.preventDefault();
     // Retrieve the values from input fields for each section and convert them to integers
     let total=0;
@@ -36,31 +50,46 @@ export default function Home() {
     setGrandTotal(total);
     const GrandPercentage = (total / 234) * 100;
     setGrandPercentage(GrandPercentage);
+
+  
+ 
+    if(userId){
+    const response = await axios.post('/api/quiz', {
+      userId,
+      score: total,
+    });
+    console.log(response)}
+
+  
+  
+ 
+
     if (GrandPercentage > 60) {
-      toast.success('Successfully completed the generic skill test', {
-        position: "bottom-center",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: "bounce", // corrected transition
-      });
+      // toast.success('Successfully completed the generic skill test', {
+      //   position: "bottom-center",
+      //   autoClose: 1000,
+      //   hideProgressBar: true,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "colored",
+      //   transition: "bounce", // corrected transition
+      // });
       router.push('/curriculum'); // corrected push method
     } else {
-      toast.error('Your Mark is less then 60%', {
-        position: "bottom-center",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: "bounce", // corrected transition
-      });
+      // toast.error('Your Mark is less then 60%', {
+      //   position: "bottom-center",
+      //   autoClose: 1000,
+      //   hideProgressBar: true,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "colored",
+      //   transition: "bounce", // corrected transition
+      // });
+      console.log("your mark is less than 60 percent")
     }
   };
   

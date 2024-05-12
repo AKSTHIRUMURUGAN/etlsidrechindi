@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import TextToSpeech from '../controls/t2s';
-import VideoPlayer from '../controls/videoplayer';
 export default function Home() {
 
     return (
@@ -12,23 +11,16 @@ export default function Home() {
       <Link href='/about'><button id="about"  className="ti"/></Link>
       <Link href='/contact'><button id="contact"  className="ti"/></Link>   
       <Link href='/curriculum'><button id="curriculumt"  className="bi"/></Link> 
-      <VideoPlayer
-        src="./videos/Joren_Falls_Izu_Jap.mp4"
-        startTime={0}
-        endTime={15}
-        id={"start"}
-        cn={"playbutton"}
-      />
       <div id='ts1' className='absolute grid  grid-cols-3 gap-8'>
-      <TextToSpeech text="Silk Thread Bundle" />
-      <TextToSpeech text="Bangle" />
-      <TextToSpeech text="Glue" />
-      <TextToSpeech text="Scissor" />
-      <TextToSpeech text="Beading Thread" />
-      <TextToSpeech text="Beads" />
-      <TextToSpeech text="Clasp" />
-      <TextToSpeech text="Hooks" />
-      <TextToSpeech text="Jump Ring" />
+      <TextToSpeech text="रेशम के धागे का बंडल" />
+      <TextToSpeech text="चूड़ी" />
+      <TextToSpeech text="गोंद" />
+      <TextToSpeech text="कैची" />
+      <TextToSpeech text="मनका धागा" />
+      <TextToSpeech text="मनका" />
+      <TextToSpeech text="पकड़" />
+      <TextToSpeech text="हुक" />
+      <TextToSpeech text="कूदने के छल्ले" />
       </div> 
       <Link href='/jewelleryvp'><button id="computervp"  className="bi"/></Link> 
   </div>

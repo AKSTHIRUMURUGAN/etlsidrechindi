@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import TextToSpeech from '../controls/t2s';
-import VideoPlayer from '../controls/videoplayer';
 export default function Home() {
 
     return (
@@ -12,20 +11,12 @@ export default function Home() {
       <Link href='/about'><button id="about"  className="ti"/></Link>
       <Link href='/contact'><button id="contact"  className="ti"/></Link>   
       <Link href='/curriculum'><button id="curriculumt"  className="bi"/></Link> 
-      <VideoPlayer
-        src="./videos/Joren_Falls_Izu_Jap.mp4"
-        startTime={0}
-        endTime={15}
-        id={"start"}
-        cn={"playbutton"}
-      />
       <div id='ts' className='absolute grid grid-cols-3 gap-11'>
-      <TextToSpeech text="Card" />
-      <TextToSpeech text="Inch Tape" />
-      <TextToSpeech text="Pen" />
-      <TextToSpeech text="Scissor" />
-      <TextToSpeech text="Cloth" />
-      {/* <TextToSpeech text="Cd or Dvd" /> */}
+      <TextToSpeech text="कार्ड" />
+      <TextToSpeech text="इंच टेप" />
+      <TextToSpeech text="कलम" />
+      <TextToSpeech text="कैंची" />
+      <TextToSpeech text="कपड़ा" />
       </div> 
       <Link href='/doormatvp'><button id="computervp"  className="bi"/></Link> 
   </div>
