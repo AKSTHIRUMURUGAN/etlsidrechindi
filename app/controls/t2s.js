@@ -8,7 +8,7 @@ const TextToSpeech = ({ text }) => {
     setIsLoading(true); // Indicate that the process has started
 
     try {
-      const response = await fetch("http://localhost:3000/api/synthesis", {
+      const response = await fetch("https://etlsidrechindi.vercel.app/api/synthesis", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
